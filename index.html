@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Address Book</title>
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="dist/css/bundle.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<!-- Script -->
+		<script src="dist/js/bundle.js"></script>
+		<script src="js/app.module.js"></script>
+		<script src="js/controllers/main.controller.js"></script>
+	</head>
+	<body class="container" ng-app="addressbook">
+
+		<header>
+			<h1>Address Book</h1>
+			<p>Developed by Roberto Minghi</p>
+		</header>
+
+		<section class="main container-fluid" ng-controller="MainController as ctrl">
+
+			<aside>
+				<form name="userForm" ng-submit="ctrl.saveData(userForm)" novalidate>
+					
+					<!-- hidden input for id -->
+					<input class="form-control" type="hidden" name="id" id="id" ng-model="ctrl.form.id" required></input>
+				
+					<!-- input for first name -->
+					<div class="form-group custom">
+						<label class="req" for="name">First name</label>
+						<input class="form-control" type="text" name="name" id="name" ng-model="ctrl.form.name" placeholder="Insert the first name..." required></input>
+						<p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block alert alert-warning">Insert the first name.</p>
+					</div>
+
+					<!-- input for last name -->
+					<div class="form-group custom">
+						<label class="req" for="surname">Last name</label>
+						<input class="form-control" type="text" name="surname" id="surname" ng-model="ctrl.form.surname" placeholder="Insert the last name..." required></input>
+						<p ng-show="userForm.surname.$invalid && !userForm.surname.$pristine" class="help-block alert alert-warning">Insert the last name.</p>
+					</div>
+
+					<!-- input for last name -->
+					<div class="form-group custom">
+						<label class="req" for="email">Email Address</label>
+						<input name="email" ng-pattern="ctrl.mailPtr" type="email" class="form-control" id="email" placeholder="Enter email address..." ng-model="ctrl.form.email" required>
+						<p ng-show="userForm.email.$error.pattern && !userForm.email.$pristine" class="help-block alert alert-warning">Insert a valid email address.</p>
+					</div>
+
+					<div class="form-group custom-btn">
+						<button type="submit" class="btn btn-primary btn-block" ng-click="userForm.$setPristine(); userForm.$setUntouched();">Save the contact</button>
+					</div>
+				</form>
+			</aside>
+
+			<main>
+				<table class="table table-striped">
+				    <tr>
+				        <th>First Name</th>
+				        <th>Last Name</th>
+				        <th>Email Address</th>
+				        <th>Location</th>
+				        <th>Operation</th>
+				    </tr>
+				    <tr ng-if="ctrl.addressbook" ng-repeat="obj in ctrl.addressbook">
+				        <td>{{obj.name}}</td>
+				        <td>{{obj.surname}}</td>
+				        <td>{{obj.email}}</td>
+				        <td>{{obj.location || "No Location added"}}</td>
+				        <td>
+				        	<div class="row">
+				        		<span class="col-md-6 glyphicon glyphicon-edit" ng-click="ctrl.editContact(obj.id)"></span>
+				        		<span class="col-md-6 glyphicon glyphicon-remove" ng-click="ctrl.deleteContact(obj.id)"></span>
+				        	</div>
+				        </td>
+				    </tr>
+				    <tr class="center" ng-if="!ctrl.addressbook">
+				    	<td colspan="5">You didn't add any contacts in your address book</td>
+				    </tr>
+    			</table>
+			</main>
+
+		</section>
+		
+	</body>
+</html>

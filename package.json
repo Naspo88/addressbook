@@ -1,0 +1,31 @@
+{
+  "name": "addressbook",
+  "version": "1.0.0",
+  "description": "Tech test",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naspo88/addressbook.git"
+  },
+  "keywords": [
+    "addressbook"
+  ],
+  "author": "Roberto Minghi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naspo88/addressbook/issues"
+  },
+  "homepage": "https://github.com/Naspo88/addressbook#readme",
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "country-list": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "jquery": "^3.2.1"
+  }
+}

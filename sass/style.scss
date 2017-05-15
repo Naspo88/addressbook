@@ -1,0 +1,66 @@
+@import "variables.scss";
+
+/* main style */
+body {
+	color: $default_text_color;
+}
+
+header {
+	border-bottom: $default_border;
+
+	h1 {
+		margin: $default_margin 0 0;
+	}
+
+	p {
+		margin: 0 $default_margin;
+	}
+}
+
+.main {
+	margin: $default_margin 0;
+
+	aside {
+		display: inline-block;
+		width: 30%;
+		padding: $default_padding;
+		border-right: $default_border;
+		box-sizing: border-box;
+
+		.req:after {
+			content: " * ";
+		};
+
+		.custom {
+			&-btn {
+				width: 60%;
+				margin: 0 0 $default_margin auto;
+			}
+
+			width: 80%;
+			margin: 0 auto $default_margin;
+
+			.alert {
+				font-size: 12px;
+				padding: 1px $default_padding;
+				margin: 4px 0;
+			}
+		}
+	}
+
+	main {
+		display: inline-block;
+		width: 70%;
+		padding: $default_padding;
+		box-sizing: border-box;
+		float: right;
+
+		.center {
+			text-align: center;
+		}
+
+		.glyphicon {
+			cursor: pointer;
+		}
+	}
+}
