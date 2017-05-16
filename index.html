@@ -57,13 +57,13 @@
 			<main>
 				<table class="table table-striped">
 				    <tr>
-				        <th>First Name</th>
-				        <th>Last Name</th>
-				        <th>Email Address</th>
-				        <th>Location</th>
+				        <th ng-click="ctrl.changeFilter('name');">First Name <span ng-if="ctrl.ordBy === 'name'" ng-class="{'glyphicon-triangle-top': ctrl.asc, 'glyphicon-triangle-bottom': !ctrl.asc}" class="glyphicon"></span></th>
+				        <th ng-click="ctrl.changeFilter('surname');">Last Name <span ng-if="ctrl.ordBy === 'surname'" ng-class="{'glyphicon-triangle-top': ctrl.asc, 'glyphicon-triangle-bottom': !ctrl.asc}" class="glyphicon"></span></th>
+				        <th ng-click="ctrl.changeFilter('email');">Email Address <span ng-if="ctrl.ordBy === 'email'" ng-class="{'glyphicon-triangle-top': ctrl.asc, 'glyphicon-triangle-bottom': !ctrl.asc}" class="glyphicon"></span></th>
+				        <th ng-click="ctrl.changeFilter('location');">Location <span ng-if="ctrl.ordBy === 'location'" ng-class="{'glyphicon-triangle-top': ctrl.asc, 'glyphicon-triangle-bottom': !ctrl.asc}" class="glyphicon"></span></th>
 				        <th>Operation</th>
 				    </tr>
-				    <tr ng-if="ctrl.addressbook" ng-repeat="obj in ctrl.addressbook">
+				    <tr ng-if="ctrl.addressbook" ng-repeat="obj in ctrl.addressbook | toArray | orderBy: ctrl.ordBy : ctrl.asc">
 				        <td>{{obj.name}}</td>
 				        <td>{{obj.surname}}</td>
 				        <td>{{obj.email}}</td>

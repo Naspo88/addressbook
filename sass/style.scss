@@ -55,6 +55,10 @@ header {
 		box-sizing: border-box;
 		float: right;
 
+		th {
+			cursor: pointer;
+		}
+
 		.center {
 			text-align: center;
 		}

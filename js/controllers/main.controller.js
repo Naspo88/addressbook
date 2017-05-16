@@ -26,9 +26,11 @@ function MainController ($scope) {
 			}
 		};
 	vm.mailPtr = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+	vm.ordBy = "id";
+	vm.asc = false;
 
-	var countries = require('country-list')();
-	console.log(countries);
+	// var countries = require('country-list')();
+	// console.log(countries);
 
 	// Initialize form
 	fn.resetForm();
@@ -40,6 +42,7 @@ function MainController ($scope) {
 	vm.saveData = saveData;
 	vm.editContact = editContact;
 	vm.deleteContact = deleteContact;
+	vm.changeFilter = changeFilter;
 
 	// Function to save the data in the form
 	function saveData (form) {
@@ -74,5 +77,11 @@ function MainController ($scope) {
 
 		// Save localstorage addressbook
 		localStorage.setItem("addressbook", JSON.stringify(vm.addressbook));
+	};
+
+	// Function to change the order in the table
+	function changeFilter (kind) {
+		vm.asc = (vm.ordBy === kind) ? !vm.asc : false;
+    	vm.ordBy = kind;
 	};
 }
