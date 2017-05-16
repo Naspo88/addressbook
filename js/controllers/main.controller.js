@@ -46,8 +46,9 @@ function MainController ($scope) {
 	vm.ordBy = "id";
 	vm.asc = false;
 
-	// var countries = require('country-list')();
-	// console.log(countries);
+	// Initialize select for countries
+	var countries = require('country-list')();
+	vm.countries = countries.getNames();
 
 	// Initialize form
 	fn.resetForm();

@@ -57,6 +57,15 @@
 						<p ng-show="userForm.email.$error.pattern && !userForm.email.$pristine" class="help-block alert alert-warning">Insert a valid email address.</p>
 					</div>
 
+					<!-- select for countries -->
+					<div class="form-group custom">
+						<label class="req" for="location">Country</label>
+						<select class="form-control" name="location" id="location" ng-model="ctrl.form.location" placeholder="Choose a country..." required>
+						  	<option ng-repeat="country in ctrl.countries track by $index" val="{country}">{{country}}</option>
+						</select>
+						<p ng-show="userForm.location.$error.pattern && !userForm.location.$pristine" class="help-block alert alert-warning">Choose the country.</p>
+					</div>
+
 					<div class="form-group custom-btn">
 						<button ng-if="ctrl.editing" type="reset" class="btn btn-secondary btn-block" ng-click="userForm.$setPristine(); userForm.$setUntouched(); ctrl.cancelEditing()">Cancel editing</button>
 						<button type="submit" class="btn btn-primary btn-block" ng-click="userForm.$setPristine(); userForm.$setUntouched();">Save the contact</button>

@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
-var babel = require('gulp-babel');
+var browserify = require("browserify");
+var source = require("vinyl-source-stream");
 
 gulp.task('styles', function() {
     gulp.src('sass/*.scss')
@@ -18,14 +19,25 @@ gulp.task('styleFiles', function() {
 });
 
 gulp.task('scripts', function() {
+	return browserify([
+		'./js/app.module.js',
+		'./js/controllers/main.controller.js',
+		'./js/filters/all.filters.js'
+	])
+    .transform("babelify")
+    .bundle()
+    .pipe(source("bundle.js"))
+    .pipe(gulp.dest("./dist/js/"));
+});
+
+gulp.task('concat', ['scripts'], function () {
 	return gulp.src([
 		'node_modules/jquery/dist/jquery.min.js',
 		'node_modules/bootstrap/dist/js/bootstrap.min.js',
 		'node_modules/angular/angular.min.js',
-		'js/**/*.js'
+		'dist/js/bundle.js'
 	])
 	.pipe(concat('bundle.js'))
-	.pipe(babel())
     .pipe(gulp.dest('dist/js/'));
 });
 
@@ -36,10 +48,10 @@ gulp.task('iconFiles', function () {
 	.pipe(gulp.dest('dist/fonts/'));
 });
 
-gulp.task('build', ['styleFiles', 'scripts', 'styles', 'iconFiles']);
+gulp.task('build', ['styleFiles', 'concat', 'styles', 'iconFiles']);
 
 //Watch task
-gulp.task('default', ['styleFiles', 'scripts', 'styles', 'iconFiles'], function() {
+gulp.task('default', ['styleFiles', 'concat', 'styles', 'iconFiles'], function() {
     gulp.watch('sass/*.scss', ['styles']);
-    gulp.watch('js/**/*.js', ['scripts']);
+    gulp.watch('js/**/*.js', ['concat']);
 });
