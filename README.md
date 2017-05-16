@@ -14,7 +14,7 @@ All data are saved in the ‘localStorage’ to let the user not lose the data w
 
 ## Getting started
 
-#Install dependencies
+# Install dependencies
 
 Execute npm install to install all dependencies and you can start to use the application.
 
