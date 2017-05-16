@@ -27,6 +27,9 @@ function MainController ($scope) {
 		};
 	vm.mailPtr = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
+	var countries = require('country-list')();
+	console.log(countries);
+
 	// Initialize form
 	fn.resetForm();
 

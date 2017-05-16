@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var babel = require('gulp-babel');
 
 gulp.task('styles', function() {
     gulp.src('sass/*.scss')
@@ -20,9 +21,11 @@ gulp.task('scripts', function() {
 	return gulp.src([
 		'node_modules/jquery/dist/jquery.min.js',
 		'node_modules/bootstrap/dist/js/bootstrap.min.js',
-		'node_modules/angular/angular.min.js'
+		'node_modules/angular/angular.min.js',
+		'js/**/*.js'
 	])
 	.pipe(concat('bundle.js'))
+	.pipe(babel())
     .pipe(gulp.dest('dist/js/'));
 });
 
@@ -38,4 +41,5 @@ gulp.task('build', ['styleFiles', 'scripts', 'styles', 'iconFiles']);
 //Watch task
 gulp.task('default', ['styleFiles', 'scripts', 'styles', 'iconFiles'], function() {
     gulp.watch('sass/*.scss', ['styles']);
+    gulp.watch('js/**/*.js', ['scripts']);
 });
