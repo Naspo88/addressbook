@@ -21,6 +21,15 @@
 
 		<section class="main container-fluid" ng-controller="MainController as ctrl">
 
+			<div ng-class="{show: ctrl.show}" class="overlay">
+				<div class="popup">
+					<h1>{{ctrl.alertMsg}}</h1>
+					<span ng-if="!ctrl.confirm" class="btn btn-primary btn-block" ng-click="ctrl.show = false">Ok</span>
+					<span ng-if="ctrl.confirm" class="btn btn-primary btn-block near" ng-click="ctrl.show = false">Cancel</span>
+					<span ng-if="ctrl.confirm" class="btn btn-danger btn-block near" ng-click="ctrl.show = false; ctrl.confirm();">Delete</span>
+				</div>
+			</div>
+
 			<aside>
 				<form name="userForm" ng-submit="ctrl.saveData(userForm)" novalidate>
 					
@@ -49,6 +58,7 @@
 					</div>
 
 					<div class="form-group custom-btn">
+						<button ng-if="ctrl.editing" type="reset" class="btn btn-secondary btn-block" ng-click="userForm.$setPristine(); userForm.$setUntouched(); ctrl.cancelEditing()">Cancel editing</button>
 						<button type="submit" class="btn btn-primary btn-block" ng-click="userForm.$setPristine(); userForm.$setUntouched();">Save the contact</button>
 					</div>
 				</form>
@@ -63,7 +73,7 @@
 				        <th ng-click="ctrl.changeFilter('location');">Location <span ng-if="ctrl.ordBy === 'location'" ng-class="{'glyphicon-triangle-top': ctrl.asc, 'glyphicon-triangle-bottom': !ctrl.asc}" class="glyphicon"></span></th>
 				        <th>Operation</th>
 				    </tr>
-				    <tr ng-if="ctrl.addressbook" ng-repeat="obj in ctrl.addressbook | toArray | orderBy: ctrl.ordBy : ctrl.asc">
+				    <tr ng-if="ctrl.addressbook" ng-repeat="obj in ctrl.addressbook | toArray | orderBy: ctrl.ordBy : ctrl.asc track by obj.id">
 				        <td>{{obj.name}}</td>
 				        <td>{{obj.surname}}</td>
 				        <td>{{obj.email}}</td>

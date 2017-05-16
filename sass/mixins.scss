@@ -1,0 +1,15 @@
+@mixin traslation ($valX: -50%, $valY: -50%) {
+	-webkit-transform: translate($valX, $valY);
+	-moz-transform: translate($valX, $valY);
+	-ms-transform: translate($valX, $valY);
+	-o-transform: translate($valX, $valY);
+	transform: translate($valX, $valY); 
+}
+
+@mixin nonSelectable () {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
