@@ -1,22 +1,24 @@
 # About
-This application is a simple web page to let user to track some contacts in the address book.
-
-The User Interface is really simple, it shows a little header where is write the title of the page and who develop the application. Above of it there is the application itself.
-
-In the left part of the page there is the form to add or edit the elements to the address book. In the right, there is the address book itself. Clicking to the headers of the table you can order all the present elements.
-
-The last row of the table there are the operation you can do to this element: the first icon is the edit action, the second the delete action.
-
-Clicking to the edit button the form in the left is populated with all element data to let the user to edit them. At the bottom appear a button to abort the changes.
-
-Clicking to the delete button the user can see a popup asking him if is sure to delete this element. If click to remove the element is directly deleted from the address book.
-All data are saved in the ‘localStorage’ to let the user not lose the data when is updating the page.
+This application is a simple web page to let user to track some contacts in the address
+book.
+The UI is fairly simple, it shows a header where is written the title of the page and who
+developed the application. Above of it there is the application itself.
+In the left-hand side of the page there is located the form to add or edit the elements in
+the address book. In the right-hand side, there is the address book. Clicking on the
+headers of the table allows users to order all the elements.
+In the last row of the table there are the operations you can do to an element: the first
+icon is the edit action, the second is instead the delete action.
+Clicking on the edit button - the form in the left will be populated with all the element’s
+data to let the user edit them. In the bottom, there is a button to revert the changes.
+Clicking on the delete button will show up a popup asking the user to confirm the
+deletion of the relative element.
+All data is saved in the ‘localStorage’ so that it is persisted in the browser.
 
 # Getting started
 
 ## Install dependencies
 
-Execute npm install to install all dependencies and you can start to use the application.
+Execute 'npm install' to install all dependencies, then execute 'gulp build' to process the files and you can start to use the application.
 
 # Used Tech
 
@@ -29,6 +31,7 @@ Execute npm install to install all dependencies and you can start to use the app
 
 # What missing
 
-I spent 4 hours to build this simple application, focusing on make a solid, clean and easy-to-read code that work without bugs. 
-With more time, it would be funny to improve the UX/UI of the application, to give the user a more enjoyable graphic.
+I spent about 4 hours to build this simple application, focusing on making solid, clean
+and readable code that works without bugs. With more time, it would be great to
+improve the UX/UI of the application, to give the user a more enjoyable graphic.
 
