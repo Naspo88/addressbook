@@ -23,10 +23,15 @@ Execute 'npm install' to install all dependencies, then execute 'gulp build' to 
 # Used Tech
 
 •	Angular.js - JS framework
+
 •	Bootstrap - CSS framework
+
 •	jQuery - to use some bootstrap functionality
+
 •	SASS – as CSS processor
+
 •	Gulp – to manage the initialization task
+
 •	Country-list – to have all countries data
 
 # What missing
