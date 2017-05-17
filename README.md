@@ -24,7 +24,7 @@ All data is saved in the ‘localStorage’ so that it is persisted in the brows
 
 ## Install dependencies
 
-Execute 'npm install' to install all dependencies, then execute 'gulp build' to process the files and you can start to use the application.
+Execute 'npm install' to install all dependencies and you can start to use the application.
 
 # Used Tech
 
